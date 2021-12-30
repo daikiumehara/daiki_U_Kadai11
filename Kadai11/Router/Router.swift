@@ -13,7 +13,7 @@ class HomeRouter {
     func presentPrefectureList() -> PrefectureList {
         let viewModel = PrefectureViewModel(
             prefectureDisplayManager: self.prefectureDisplayManager,
-            prefectureUseCase: PrefectureUseCase(prefectureRepo: PrefectureRepository())
+            prefectureUseCase: PrefectureUseCase(prefectureRepo: PrefectureRepository.default)
         )
         return PrefectureList(viewModel: viewModel)
     }

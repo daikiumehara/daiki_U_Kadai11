@@ -20,12 +20,19 @@ class PrefectureViewModel: ObservableObject {
     }
 
     private func fetchPrefectures() {
-        Task {
-            self.prefectures = await self.prefectureUseCase.getPrefectures()
+        DispatchQueue.main.async {
+            Task {
+                self.prefectures = await self.prefectureUseCase.getPrefectures()
+            }
         }
     }
 
-    func didTapCancelButton() {
+    func onTapCancelButton() {
+        self.prefectureDisplayManager.toggle()
+    }
+
+    func onTapCell(_ prefecture: String) {
+        self.prefectureUseCase.saveSelectedPrefecture(prefecture)
         self.prefectureDisplayManager.toggle()
     }
 

@@ -14,7 +14,14 @@ struct PrefectureList: View {
         NavigationView {
             List {
                 ForEach(self.viewModel.prefectures, id: \.self) { prefecture in
-                    Text(prefecture)
+                    HStack {
+                        Text(prefecture)
+                        Spacer()
+                    }
+                    .contentShape(Rectangle())
+                    .onTapGesture {
+                        self.viewModel.onTapCell(prefecture)
+                    }
                 }
             }
             .navigationBarTitle("都道府県", displayMode: .inline)
@@ -22,7 +29,7 @@ struct PrefectureList: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
-                        self.viewModel.didTapCancelButton()
+                        self.viewModel.onTapCancelButton()
                     } label: {
                         Text("cancel")
                     }

@@ -9,6 +9,8 @@ import Foundation
 
 protocol PrefectureUseCaseProtocol {
     func getPrefectures() async -> [String]
+    func saveSelectedPrefecture(_ prefecture: String)
+    func getSelectedPrefecture() -> String
 }
 
 class PrefectureUseCase: PrefectureUseCaseProtocol {
@@ -16,6 +18,14 @@ class PrefectureUseCase: PrefectureUseCaseProtocol {
 
     init(prefectureRepo: PrefectureRepositoryProtocol) {
         self.prefectureRepo = prefectureRepo
+    }
+
+    func saveSelectedPrefecture(_ prefecture: String) {
+        self.prefectureRepo.saveSelectedPrefecture(prefecture)
+    }
+
+    func getSelectedPrefecture() -> String {
+        self.prefectureRepo.getSelectedPrefecture()
     }
 
     func getPrefectures() async -> [String] {

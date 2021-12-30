@@ -10,11 +10,14 @@ import Combine
 
 class HomeViewModel: StatusDelegate {
     @Published var prefectureDisplayManager = PrefecturesDisplayStatusManager(isShow: false)
-    @Published var prefecture: String = "未選択"
+    @Published var prefecture: String = ""
     var router: HomeRouter
+    private var prefectureUseCase: PrefectureUseCaseProtocol
 
-    init(router: HomeRouter) {
+    init(router: HomeRouter,
+         prefectureUseCase: PrefectureUseCaseProtocol) {
         self.router = router
+        self.prefectureUseCase = prefectureUseCase
 
         super.init()
 
@@ -26,7 +29,11 @@ class HomeViewModel: StatusDelegate {
         router.prefectureDisplayManager = self.prefectureDisplayManager
     }
 
-    func didTapSelectButton() {
+    func onAppear() {
+        self.prefecture = self.prefectureUseCase.getSelectedPrefecture()
+    }
+
+    func onTapSelectButton() {
         self.prefectureDisplayManager.toggle()
     }
 }
