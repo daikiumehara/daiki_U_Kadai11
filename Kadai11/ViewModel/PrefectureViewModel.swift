@@ -6,17 +6,30 @@
 //
 
 import Foundation
-import Combine
 
 class PrefectureViewModel: ObservableObject {
-    @Published var isShowPrefectures: Bool
+    private let prefectureUseCase: PrefectureUseCaseProtocol
+    @Published var prefectureDisplayManager: PrefecturesDisplayStatusManager
     @Published var prefectures = [String]()
 
-    init(isShowPrefectures: Published<Bool>) {
-        self._isShowPrefectures = isShowPrefectures
+
+    init(prefectureDisplayManager: PrefecturesDisplayStatusManager,
+         prefectureUseCase: PrefectureUseCaseProtocol) {
+        self.prefectureDisplayManager = prefectureDisplayManager
+        self.prefectureUseCase = prefectureUseCase
+    }
+
+    private func fetchPrefectures() {
+        Task {
+            self.prefectures = await self.prefectureUseCase.getPrefectures()
+        }
     }
 
     func didTapCancelButton() {
-        self.isShowPrefectures.toggle()
+        self.prefectureDisplayManager.toggle()
+    }
+
+    func onAppear() {
+        self.fetchPrefectures()
     }
 }

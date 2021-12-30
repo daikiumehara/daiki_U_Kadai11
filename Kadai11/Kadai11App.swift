@@ -11,7 +11,7 @@ import SwiftUI
 struct Kadai11App: App {
     var body: some Scene {
         WindowGroup {
-            HomeView()
+            HomeView(viewModel: HomeViewModel(router: HomeRouter()))
         }
     }
 }

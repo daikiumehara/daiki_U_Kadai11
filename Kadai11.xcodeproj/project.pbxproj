@@ -18,6 +18,7 @@
 		A66980D0277B6F6E0036B472 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66980CF277B6F6E0036B472 /* Router.swift */; };
 		A66980D2277B6F9F0036B472 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66980D1277B6F9F0036B472 /* HomeView.swift */; };
 		A6CE14DC277C96E2004C8732 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6CE14DB277C96E2004C8732 /* HomeViewModel.swift */; };
+		A6CE14DF277D71A5004C8732 /* PrefecturesDisplayStatusManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6CE14DE277D71A5004C8732 /* PrefecturesDisplayStatusManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +34,7 @@
 		A66980CF277B6F6E0036B472 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		A66980D1277B6F9F0036B472 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		A6CE14DB277C96E2004C8732 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		A6CE14DE277D71A5004C8732 /* PrefecturesDisplayStatusManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrefecturesDisplayStatusManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +67,7 @@
 		A66980AF277B4C0C0036B472 /* Kadai11 */ = {
 			isa = PBXGroup;
 			children = (
+				A6CE14DD277D7177004C8732 /* Helper */,
 				A66980CE277B6ED00036B472 /* Router */,
 				A66980CB277B680C0036B472 /* API */,
 				A66980C6277B65C50036B472 /* Repository */,
@@ -134,6 +137,14 @@
 				A66980CF277B6F6E0036B472 /* Router.swift */,
 			);
 			path = Router;
+			sourceTree = "<group>";
+		};
+		A6CE14DD277D7177004C8732 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				A6CE14DE277D71A5004C8732 /* PrefecturesDisplayStatusManager.swift */,
+			);
+			path = Helper;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -214,6 +225,7 @@
 				A66980C8277B66A40036B472 /* PrefectureUseCase.swift in Sources */,
 				A66980D2277B6F9F0036B472 /* HomeView.swift in Sources */,
 				A66980BF277B4F9E0036B472 /* PrefectureList.swift in Sources */,
+				A6CE14DF277D71A5004C8732 /* PrefecturesDisplayStatusManager.swift in Sources */,
 				A66980B1277B4C0C0036B472 /* Kadai11App.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

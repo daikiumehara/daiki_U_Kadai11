@@ -8,11 +8,11 @@
 import Foundation
 
 protocol PrefectureRepositoryProtocol {
-    func getPrefectures() -> [String]
+    func getPrefectures() async -> [String]
 }
 
 class PrefectureRepository: PrefectureRepositoryProtocol {
-    func getPrefectures() -> [String] {
-        APIClient.fetchData()
+    func getPrefectures() async -> [String] {
+        await APIClient.fetchData()
     }
 }

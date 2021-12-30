@@ -8,14 +8,12 @@
 import SwiftUI
 
 struct PrefectureList: View {
-
-    @Binding var isShowPrefectures: Bool
-    var prefectures: [String]
+    @ObservedObject var viewModel: PrefectureViewModel
 
     var body: some View {
         NavigationView {
             List {
-                ForEach(self.prefectures, id: \.self) { prefecture in
+                ForEach(self.viewModel.prefectures, id: \.self) { prefecture in
                     Text(prefecture)
                 }
             }
@@ -24,19 +22,26 @@ struct PrefectureList: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
-                        self.isShowPrefectures.toggle()
+                        self.viewModel.didTapCancelButton()
                     } label: {
                         Text("cancel")
                     }
                 }
             }
         }
+        .onAppear {
+            self.viewModel.onAppear()
+        }
     }
 }
 
 struct PrefectureList_Previews: PreviewProvider {
+    static var value = Published(initialValue: false)
     static var previews: some View {
-        PrefectureList(isShowPrefectures: .constant(true),
-                       prefectures: ["a", "b", "c", "d"])
+        PrefectureList(
+            viewModel: PrefectureViewModel(
+                prefectureDisplayManager: PrefecturesDisplayStatusManager(isShow: false), prefectureUseCase: PrefectureUseCase(prefectureRepo: PrefectureRepository())
+            )
+        )
     }
 }

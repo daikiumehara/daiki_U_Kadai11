@@ -19,7 +19,7 @@ struct APIClient {
                              "佐賀県", "長崎県", "熊本県", "大分県", "宮崎県",
                              "鹿児島県", "沖縄県"]
 
-    static func fetchData() -> [String] {
+    static func fetchData() async -> [String] {
         return self.data
     }
 }

@@ -8,7 +8,7 @@
 import Foundation
 
 protocol PrefectureUseCaseProtocol {
-    func getPrefectures() -> [String]
+    func getPrefectures() async -> [String]
 }
 
 class PrefectureUseCase: PrefectureUseCaseProtocol {
@@ -18,7 +18,7 @@ class PrefectureUseCase: PrefectureUseCaseProtocol {
         self.prefectureRepo = prefectureRepo
     }
 
-    func getPrefectures() -> [String] {
-        self.prefectureRepo.getPrefectures()
+    func getPrefectures() async -> [String] {
+        await self.prefectureRepo.getPrefectures()
     }
 }
