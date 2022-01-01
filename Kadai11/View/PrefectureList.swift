@@ -47,7 +47,8 @@ struct PrefectureList_Previews: PreviewProvider {
     static var previews: some View {
         PrefectureList(
             viewModel: PrefectureViewModel(
-                prefectureDisplayManager: PrefecturesDisplayStatusManager(isShow: false), prefectureUseCase: PrefectureUseCase(prefectureRepo: PrefectureRepository())
+                prefectureUseCase: PrefectureUseCase(prefectureRepo: PrefectureRepository()),
+                isPresented: Binding<Bool>.constant(false)
             )
         )
     }

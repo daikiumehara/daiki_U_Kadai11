@@ -6,17 +6,17 @@
 //
 
 import Foundation
+import SwiftUI
 
 class PrefectureViewModel: ObservableObject {
     private let prefectureUseCase: PrefectureUseCaseProtocol
-    @Published var prefectureDisplayManager: PrefecturesDisplayStatusManager
     @Published var prefectures = [String]()
+    @Published var isPresented: Binding<Bool>
 
-
-    init(prefectureDisplayManager: PrefecturesDisplayStatusManager,
-         prefectureUseCase: PrefectureUseCaseProtocol) {
-        self.prefectureDisplayManager = prefectureDisplayManager
+    init(prefectureUseCase: PrefectureUseCaseProtocol,
+         isPresented: Binding<Bool>) {
         self.prefectureUseCase = prefectureUseCase
+        self.isPresented = isPresented
     }
 
     private func fetchPrefectures() {
@@ -28,12 +28,12 @@ class PrefectureViewModel: ObservableObject {
     }
 
     func onTapCancelButton() {
-        self.prefectureDisplayManager.toggle()
+        isPresented.wrappedValue = false
     }
 
     func onTapCell(_ prefecture: String) {
         self.prefectureUseCase.saveSelectedPrefecture(prefecture)
-        self.prefectureDisplayManager.toggle()
+        isPresented.wrappedValue = false
     }
 
     func onAppear() {

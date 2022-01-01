@@ -8,9 +8,10 @@
 import Foundation
 import Combine
 
-class HomeViewModel: StatusDelegate {
-    @Published var prefectureDisplayManager = PrefecturesDisplayStatusManager(isShow: false)
+class HomeViewModel : ObservableObject {
     @Published var prefecture: String = ""
+    @Published var isShowPrefectureList = false
+
     var router: HomeRouter
     private var prefectureUseCase: PrefectureUseCaseProtocol
 
@@ -18,15 +19,6 @@ class HomeViewModel: StatusDelegate {
          prefectureUseCase: PrefectureUseCaseProtocol) {
         self.router = router
         self.prefectureUseCase = prefectureUseCase
-
-        super.init()
-
-        self.setRouter(router)
-        self.prefectureDisplayManager.delegate = self
-    }
-
-    private func setRouter(_ router: HomeRouter) {
-        router.prefectureDisplayManager = self.prefectureDisplayManager
     }
 
     func onAppear() {
@@ -34,6 +26,6 @@ class HomeViewModel: StatusDelegate {
     }
 
     func onTapSelectButton() {
-        self.prefectureDisplayManager.toggle()
+        isShowPrefectureList = true
     }
 }
