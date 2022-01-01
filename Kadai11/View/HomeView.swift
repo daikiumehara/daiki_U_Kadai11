@@ -24,10 +24,10 @@ struct HomeView: View {
         .onAppear {
             self.viewModel.onAppear()
         }
-        .fullScreenCover(isPresented: self.$viewModel.prefectureDisplayManager.isShow) {
+        .fullScreenCover(isPresented: self.$viewModel.isShowPrefectureList) {
             self.viewModel.onAppear()
         } content: {
-            self.viewModel.router.presentPrefectureList()
+            self.viewModel.router.presentPrefectureList(isPresented: $viewModel.isShowPrefectureList)
         }
 
     }

@@ -8,12 +8,10 @@
 import SwiftUI
 
 class HomeRouter {
-    var prefectureDisplayManager: PrefecturesDisplayStatusManager!
-
-    func presentPrefectureList() -> PrefectureList {
+    func presentPrefectureList(isPresented: Binding<Bool>) -> PrefectureList {
         let viewModel = PrefectureViewModel(
-            prefectureDisplayManager: self.prefectureDisplayManager,
-            prefectureUseCase: PrefectureUseCase(prefectureRepo: PrefectureRepository.default)
+            prefectureUseCase: PrefectureUseCase(prefectureRepo: PrefectureRepository.default),
+            isPresented: isPresented
         )
         return PrefectureList(viewModel: viewModel)
     }
